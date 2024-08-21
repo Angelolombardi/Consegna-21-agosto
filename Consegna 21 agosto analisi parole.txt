@@ -1,0 +1,27 @@
+import re
+def conta_parole(testo):
+    # Convertiamo il testo in minuscolo
+    testo = testo.lower()
+    
+    # Rimuoviamo la punteggiatura usando una regex
+    testo = re.sub(r'[^\w\s]', '', testo)
+    
+    # Dividiamo il testo in parole
+    parole = testo.split()
+    
+    # Creiamo un dizionario per il conteggio delle parole
+    dizionario_occorrenze = {}
+    
+    # Iteriamo su ogni parola e aggiorniamo il dizionario
+    for parola in parole:
+        if parola in dizionario_occorrenze:
+            dizionario_occorrenze[parola] += 1
+        else:
+            dizionario_occorrenze[parola] = 1
+    
+    return dizionario_occorrenze
+
+# Esempio di utilizzo
+testo = "Ciao, ciao! Come stai? Stai bene?"
+risultato = conta_parole(testo)
+print(risultato)
